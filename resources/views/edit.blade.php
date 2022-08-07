@@ -20,7 +20,6 @@
       color: white;
     }
 </style>
-@section('title', 'edit.blade.php')
 
 @section('content')
 @if (count($errors) > 0)

@@ -20,7 +20,6 @@
       color: white;
     }
 </style>
-@section('title', 'delete.blade.php')
 
 @section('content')
 <form action="/delete" method="POST">
@@ -31,7 +30,7 @@
         id
       </th>
       <td>
-        <input type="text" name="id" value="{{$form->id}}">
+        <input type="text" name="タスク名" value="{{$form->id}}">
       </td>
     </tr>
     <tr>
