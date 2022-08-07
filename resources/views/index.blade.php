@@ -41,18 +41,20 @@
       </td>
       <th>タスク名</th>
       <td>
-        <input type="text" name="" value="{{$form->task}}">
+
       </td>      
       <form action="/edit" method="POST">
         <th>更新</th>
         <td>
-          <input type="submit" value="更新">
-        </td>      
+
+        </td>   
+      </form>     
       <form action="/delete" method="POST">
         <th>削除</th>
         <td>
-          <input type="submit" value="削除">
+
         </td>
+      </form>  
     </tr>
   </table>
 @endsection
