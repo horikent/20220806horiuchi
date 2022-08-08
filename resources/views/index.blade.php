@@ -1,4 +1,4 @@
-@extends('layouts.default')
+
 <style>
   body {
       background-color: rgb(29, 7, 130);
@@ -25,9 +25,9 @@
 </ul>
 @endif
 
-@section('content')
 <div class="todolist">
   <h2 class="title">Todo List</h2>
+
     <form action="/add" method="post">
       <input type="text" id="id" name="task" required minlength="1" maxlength="20" size="30">
       <input type="submit" value="追加">
@@ -56,7 +56,7 @@
         </td>
       </form>  
     </tr>
-  </table>
-@endsection
+</table>
+
 
 
