@@ -13,12 +13,9 @@ class TodoRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() == '/') {
             return true;
-        } else {
-            return false;
         }
-    }
+    
 
     /**
      * Get the validation rules that apply to the request.
