@@ -38,35 +38,36 @@
           </td>
         </tr>
       @endif  
-          
+
       <input type="text" id="id" name="task" required minlength="1" maxlength="20" size="30">
       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
       <input type="submit" value="追加">
     </form>
 
   <table>
+  @foreach ($todos as $todo)
     <tr>
       <th>作成日</th>
       <td>
+        {{$todos->created_at}}
       </td>
       <th>タスク名</th>
       <td>
-
+        {{$todos->taks}}
       </td>      
       <form action="/edit" method="POST">
         <th>更新</th>
         <td>
-
-        </td>   
+          <input type="submit" value="更新"> 
+        </td>
       </form>     
       <form action="/delete" method="POST">
         <th>削除</th>
         <td>
-
-        </td>
+          <input type="submit" value="削除"> 
+        <td>
       </form>  
     </tr>
+  @endforeach  
 </table>
-
-
 
