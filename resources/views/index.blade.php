@@ -70,7 +70,7 @@
         </td>
         <td>
           <form action="/delete" method="POST">
-            <input type="hidden" name="id">            
+            <input type="hidden" name="delete" value="{{$todo->id}}">            
               @csrf
                 <button type="submit" class="btn-delete">
                 削除
