@@ -11,7 +11,7 @@ class TodoController extends Controller
     public function index()
     {
         $todos = Todo::all();
-        return view('index', ['todos' => $todos]);
+            return view('index', ['todos' => $todos]);
     }
 
 	public function add()
@@ -24,4 +24,10 @@ class TodoController extends Controller
         Todo::create($form);
         return redirect('/');
 	}
+    public function upload(TodoRequest $request)
+    {
+        $form = $request->all();
+        Todo::edit($form);
+        return redirect('/');
+	}    
 }    
