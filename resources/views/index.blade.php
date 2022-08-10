@@ -5,7 +5,7 @@
   }
 
   .todolist {
-      margin: 25%;
+      margin: 10% 25%;
       width: 500px;
       background-color: white;
       background-size: cover;
@@ -18,16 +18,6 @@
   }
 
 </style>
-
-  @if (count($errors) > 0)
-    <ul>
-      @foreach ($errors->all() as $error)
-        <li>
-          {{$error}}
-        </li>
-      @endforeach
-    </ul>
-  @endif
 
 <div class="todolist">
   <h2 class="title">Todo List</h2>
@@ -42,7 +32,6 @@
           </td>
         </tr>
       @endif  
-
       <input type="text" id="id" name="task" required minlength="1" maxlength="20" size="30">
       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
       <input type="submit" value="追加">
@@ -69,13 +58,17 @@
         <td>
           <form action="/edit" method="POST">
             @csrf
-            <input type="submit" value="更新"> 
+              <button type="submit" class="btn-edit">
+                更新
+              </button> 
           </form>   
         </td>
         <td>
           <form action="/delete" method="POST">
             @csrf
-              <input type="submit" value="削除"> 
+              <button type="submit" class="btn-dalete">
+                削除
+              </button> 
           </form>  
         <td>
       </tr>     
