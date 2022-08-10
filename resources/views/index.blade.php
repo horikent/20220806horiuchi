@@ -13,9 +13,20 @@
       padding: 20px 0 20px 30px;   
   }        
   
-  table {
-    display:inline-block 
+  .btn-add {
+      display: inline-block;
+      padding: 0.3em 1em;
+      text-decoration: none;
+      color: darkviolet;
+      border: solid 2px darkviolet;
+      border-radius: 3px;
+      transition: .4s;
+      background: white;      
   }
+  .btn-add:hover {
+      background: darkviolet;
+      color: white;
+}
 
   .table-ttl {
     padding-bottom: 10px;
@@ -37,9 +48,9 @@
           </td>
         </tr>
       @endif  
-      <input type="text" id="id" name="task" required minlength="1" maxlength="20" size="30">
+      <input type="text" name="task" required minlength="1" maxlength="20" size="40">
       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-      <input type="submit" value="追加">
+      <input type="submit" class="btn-add" name="task" value="追加">
     </form>
 
   <table>
@@ -58,11 +69,13 @@
           {{$todo->created_at}} 
         </td>    
         <td>
-          <input type="text" id="id" name="task" value=" {{$todo->task}}" size="20">
+          <input type="text" name="task" value=" {{$todo->task}}" size="25">
         </td>    
         <td>
           <form action="/edit" method="POST">
-            @csrf
+            @csrf         
+              <input type="hidden" name="id" value="{{$todo->id}}">             
+              <input type="hidden" name="task" value="{{$todo->task}}">                  
               <button type="submit" class="btn-edit">
                 更新
               </button> 
@@ -70,8 +83,8 @@
         </td>
         <td>
           <form action="/delete" method="POST">
-            <input type="hidden" name="delete" value="{{$todo->id}}">            
-              @csrf
+            @csrf            
+              <input type="hidden" name="id" value="{{$todo->id}}">            
                 <button type="submit" class="btn-delete">
                 削除
                 </button> 
