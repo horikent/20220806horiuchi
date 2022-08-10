@@ -70,16 +70,16 @@
         </td>    
         <td>
           <input type="text" name="task" value=" {{$todo->task}}" size="25">
-        </td>    
-        <td>
-          <form action="/edit" method="POST">
+            <form action="/edit" method="POST">
             @csrf         
               <input type="hidden" name="id" value="{{$todo->id}}">             
               <input type="hidden" name="task" value="{{$todo->task}}">                  
+        </td>    
+        <td>
               <button type="submit" class="btn-edit">
                 更新
               </button> 
-          </form>   
+            </form>     
         </td>
         <td>
           <form action="/delete" method="POST">
