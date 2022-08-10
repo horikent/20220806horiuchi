@@ -17,6 +17,11 @@
     display:inline-block 
   }
 
+  .table-ttl {
+    padding-bottom: 10px;
+    justify-content: space-evenly ;
+  }
+
 </style>
 
 <div class="todolist">
@@ -38,14 +43,14 @@
     </form>
 
   <table>
-  
-    <tr>
-      <th>作成日</th>
-      <th>タスク名</th>
-      <th>更新</th>
-      <th>削除</th>
-    </tr>     
-
+    <div class="table-ttl">
+      <tr>
+        <th>作成日</th>
+        <th>タスク名</th>
+        <th>更新</th>
+        <th>削除</th>
+      </tr>     
+    </div>
   <ul>
     @foreach ($todos as $todo)  
       <tr>  
@@ -65,10 +70,11 @@
         </td>
         <td>
           <form action="/delete" method="POST">
-            @csrf
-              <button type="submit" class="btn-dalete">
+            <input type="hidden" name="id">            
+              @csrf
+                <button type="submit" class="btn-delete">
                 削除
-              </button> 
+                </button> 
           </form>  
         <td>
       </tr>     
