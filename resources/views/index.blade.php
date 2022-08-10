@@ -6,10 +6,11 @@
 
   .todolist {
       margin: 25%;
-      height: 300px;
-      width: 600px;
+      width: 500px;
       background-color: white;
-      border-radius: 10px;    
+      background-size: cover;
+      border-radius: 10px; 
+      padding: 20px 0 20px 30px;   
   }        
   
   table {
@@ -55,33 +56,30 @@
       <th>更新</th>
       <th>削除</th>
     </tr>     
+
   <ul>
-    <li> 
-    <tr>  
-      <td>
-        @foreach ($todos as $todo)
+    @foreach ($todos as $todo)  
+      <tr>  
+        <td>
           {{$todo->created_at}} 
-        @endforeach
-      </td>    
-      <td>
-        @foreach ($todos as $todo)
+        </td>    
+        <td>
           <input type="text" id="id" name="task" value=" {{$todo->task}}" size="20">
-        @endforeach
-      </td>    
-      <td>
-        <form action="/edit" method="POST">
-          @csrf
+        </td>    
+        <td>
+          <form action="/edit" method="POST">
+            @csrf
             <input type="submit" value="更新"> 
-        </form>   
-      </td>
-      <td>
-        <form action="/delete" method="POST">
-          @csrf
-            <input type="submit" value="削除"> 
-        </form>  
-      <td>
-    </tr>
-    </li>   
+          </form>   
+        </td>
+        <td>
+          <form action="/delete" method="POST">
+            @csrf
+              <input type="submit" value="削除"> 
+          </form>  
+        <td>
+      </tr>     
+    @endforeach
   </ul>
   </table>
-
+</div>
