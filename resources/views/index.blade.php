@@ -12,26 +12,56 @@
       border-radius: 10px; 
       padding: 20px 0 20px 30px;   
   }        
-  
-  .btn-add {
+
+  .text-add{
+      padding:10px 0;
+      border-radius: 5px;  
+      border-color: lightgray:
+  }
+
+    .table-ttl {
+    padding-bottom: 10px;
+    justify-content: space-evenly ;
+  }
+
+.btn {
       display: inline-block;
       padding: 0.3em 1em;
       text-decoration: none;
-      color: darkviolet;
-      border: solid 2px darkviolet;
       border-radius: 3px;
       transition: .4s;
-      background: white;      
+      background: white;   
+      font-weight:bold;
+  }
+
+  .btn-add {
+      color: darkviolet;
+      border: solid 3px darkviolet;
   }
   .btn-add:hover {
       background: darkviolet;
       color: white;
 }
 
-  .table-ttl {
-    padding-bottom: 10px;
-    justify-content: space-evenly ;
+  .btn-edit{
+      color: chocolate;
+      border: solid 3px chocolate;
+      writing-mode: vertical-rl;
   }
+  .btn-edit:hover {
+      background: chocolate;
+      color: white;
+}
+  .btn-delete{
+      color: aquamarine;
+      border: solid 3px aquamarine;
+      writing-mode: vertical-rl;
+  }
+  .btn-delete:hover {
+      background: aquamarine;
+      color: white;
+}
+
 
 </style>
 
@@ -48,9 +78,9 @@
           </td>
         </tr>
       @endif  
-      <input type="text" name="task" required minlength="1" maxlength="20" size="40">
+      <input type="text" class="text-add" name="task" required minlength="1" maxlength="20" size="40">
       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-      <input type="submit" class="btn-add" name="task" value="追加">
+      <input type="submit" class="btn btn-add" name="task" value="追加">
     </form>
 
   <table>
@@ -68,24 +98,22 @@
         <td>
           {{$todo->created_at}} 
         </td>    
+      <form action="/edit" method="POST">
+        @csrf   
         <td>
-          <input type="text" name="task" value=" {{$todo->task}}" size="25">
-            <form action="/edit" method="POST">
-            @csrf         
-              <input type="hidden" name="id" value="{{$todo->id}}">             
-              <input type="hidden" name="task" value="{{$todo->task}}">                  
-        </td>    
-        <td>
-              <button type="submit" class="btn-edit">
-                更新
-              </button> 
-            </form>     
+          <input type="text" name="task" value=" {{$todo->task}}" size="20">              
         </td>
+      </form>            
+        <td>
+          <button type="submit" class="btn btn-edit">
+            更新
+          </button> 
+        </td> 
         <td>
           <form action="/delete" method="POST">
             @csrf            
               <input type="hidden" name="id" value="{{$todo->id}}">            
-                <button type="submit" class="btn-delete">
+                <button type="submit" class="btn btn-delete">
                 削除
                 </button> 
           </form>  
