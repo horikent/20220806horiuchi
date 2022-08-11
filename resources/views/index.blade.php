@@ -6,55 +6,67 @@
 
   .todolist {
       margin: 10% 25%;
-      width: 500px;
+      height: 324px;
       background-color: white;
       background-size: cover;
       border-radius: 10px; 
-      padding: 20px 0 20px 30px;   
+      padding: 20px;   
   }        
 
   .text-add{
-      padding:10px 0;
       border-radius: 5px;  
-      border-color: lightgray:
+      border-color: lightgray;
+      height: 40px;
+      width:80%;
   }
 
-    .table-ttl {
-    padding-bottom: 10px;
-    justify-content: space-evenly ;
+  .text-edit{
+      padding:6px 0;
+      border-radius: 5px;  
+      border-color: lightgray;
+      height: 30px;
+      width: 100%;
   }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 8px 10px;
+    text-align: center;
+    width:100%;
+    justify-content: space-between;
+  }  
 
 .btn {
       display: inline-block;
       padding: 0.3em 1em;
       text-decoration: none;
-      border-radius: 3px;
+      border-radius: 4px;
       transition: .4s;
       background: white;   
       font-weight:bold;
   }
 
   .btn-add {
-      color: darkviolet;
-      border: solid 3px darkviolet;
+      color: mediumorchid;
+      border: solid 2.5px mediumorchid;
   }
   .btn-add:hover {
-      background: darkviolet;
+      background: mediumorchid;
       color: white;
 }
 
   .btn-edit{
-      color: chocolate;
-      border: solid 3px chocolate;
+      color: darkorange;
+      border: solid 2.5px darkorange;
       writing-mode: vertical-rl;
   }
   .btn-edit:hover {
-      background: chocolate;
+      background: darkorange;
       color: white;
 }
   .btn-delete{
       color: aquamarine;
-      border: solid 3px aquamarine;
+      border: solid 2.5px aquamarine;
       writing-mode: vertical-rl;
   }
   .btn-delete:hover {
@@ -67,7 +79,6 @@
 
 <div class="todolist">
   <h2 class="title">Todo List</h2>
-
     <form action="/add" method="post">
       @csrf
       @if ($errors->has('name'))
@@ -78,48 +89,57 @@
           </td>
         </tr>
       @endif  
-      <input type="text" class="text-add" name="task" required minlength="1" maxlength="20" size="40">
+      <input type="text" class="text-add" name="task" required minlength="1" maxlength="20" >
       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-      <input type="submit" class="btn btn-add" name="task" value="追加">
+        <button type="submit" class="btn btn-add">
+          追加
+        </button>
     </form>
 
-  <table>
-    <div class="table-ttl">
-      <tr>
+  <table>   
+    <tr>
+      <div class="table-th">
         <th>作成日</th>
         <th>タスク名</th>
         <th>更新</th>
         <th>削除</th>
-      </tr>     
-    </div>
+      </div>     
+    </tr>
   <ul>
-    @foreach ($todos as $todo)  
+    <div class="table-td">
+      @foreach ($todos as $todo)  
       <tr>  
         <td>
-          {{$todo->created_at}} 
+          @if($todo->created_at === $todo->updated_at)
+            {{$todo->created_at}}
+          @else 
+            {{$todo->updated_at}} 
+          @endif
         </td>    
       <form action="/edit" method="POST">
         @csrf   
         <td>
-          <input type="text" name="task" value=" {{$todo->task}}" size="20">              
-        </td>
-      </form>            
+          <input type="text" class=text-edit name="task" value=" {{$todo->task}}" size="20">                   
+          <input type="hidden" name="id" value="{{$todo->id}}">  
+        </td>          
         <td>
           <button type="submit" class="btn btn-edit">
             更新
           </button> 
         </td> 
-        <td>
-          <form action="/delete" method="POST">
-            @csrf            
-              <input type="hidden" name="id" value="{{$todo->id}}">            
-                <button type="submit" class="btn btn-delete">
+      </form>    
+      <form action="/delete" method="POST">
+        @csrf          
+          <td>          
+            <input type="hidden" name="id" value="{{$todo->id}}">            
+              <button type="submit" class="btn btn-delete">
                 削除
-                </button> 
-          </form>  
-        <td>
+              </button> 
+          <td>
+      </form>  
       </tr>     
-    @endforeach
+      @endforeach
+    </div>  
   </ul>
   </table>
 </div>
