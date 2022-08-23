@@ -11,4 +11,7 @@ class Todo extends Model
 
     protected $fillable = ['task',  'created_at' , 'updated_at'];
     
+    public function tag(){
+    return $this->belongsTo('App\Models\Tag');
+    }
 }

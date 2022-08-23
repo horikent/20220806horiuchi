@@ -1,4 +1,4 @@
-
+  
 <style>
   body {
       background-color: rgb(29, 7, 130);
@@ -6,12 +6,25 @@
 
   .todolist {
       margin: 10% 25%;
-      height: 324px;
+      height: auto;
       background-color: white;
       background-size: cover;
       border-radius: 10px; 
       padding: 20px;   
   }        
+
+  .find {
+    margin: 5px 0;
+    padding: 5px;
+    background: white;
+    border-radius: 5px;  
+    border-color:#adff2f;
+  }
+
+  a{
+  text-decoration: none;
+  color: #adff2f;
+  }
 
   .text-add{
       border-radius: 5px;  
@@ -79,6 +92,9 @@
 
 <div class="todolist">
   <h2 class="title">Todo List</h2>
+    <button class="find">
+      <a href="/find">タスク検索</a>
+    </button>
     <form action="/add" method="post">
       @csrf
       @if ($errors->has('name'))
@@ -91,6 +107,16 @@
       @endif  
       <input type="text" class="text-add" name="task" required minlength="1" maxlength="20" >
       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+        <div class="tag">
+          <select name="tag-select">
+            <option value=""></option>
+            <option value="家事">家事</option>
+            <option value="勉強">勉強</option>
+            <option value="運動">運動</option>
+            <option value="食事">食事</option>
+            <option value="移動">移動</option>
+          </select>
+        </div>
         <button type="submit" class="btn btn-add">
           追加
         </button>
@@ -101,6 +127,7 @@
       <div class="table-th">
         <th>作成日</th>
         <th>タスク名</th>
+        <th>タグ</th>
         <th>更新</th>
         <th>削除</th>
       </div>     
@@ -122,6 +149,11 @@
           <input type="text" class=text-edit name="task" value=" {{$todo->task}}" size="20">                   
           <input type="hidden" name="id" value="{{$todo->id}}">  
         </td>          
+        <td>
+          <button type="submit" value="">
+            
+          </button> 
+        </td> 
         <td>
           <button type="submit" class="btn btn-edit">
             更新

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTodosTable extends Migration
+class AddColumnTagIdToTodos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateTodosTable extends Migration
      */
     public function up()
     {
-        Schema::create('todos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamp('created_at')->useCurrent()->nullable();
-            $table->timestamp('updated_at')->useCurrent()->nullable();
-            $table->string('task', 20);
+        Schema::table('todos', function (Blueprint $table) {
+            $table->int('tag_id');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateTodosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('todos');
+        Schema::table('todos', function (Blueprint $table) {
+            //
+        });
     }
 }

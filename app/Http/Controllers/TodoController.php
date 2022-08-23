@@ -13,13 +13,25 @@ class TodoController extends Controller
         $todos = Todo::all();
             return view('index', ['todos' => $todos]);
     }
-    public function create(TodoRequest $request)
+    
+    public function find()
+    {
+        return view('find', ['input' => '']);
+    }
+    public function search(Request $request)
+    {
+        $find = $request->input;
+        $search=Todo::where('task', 'LIKE BINARY',"%{$request->input}%")->get();
+        return redirect('/find');
+    }
+
+    public function create(Request $request)
     {
         $form = $request->all();
         Todo::create($form);
         return redirect('/');
 	}
-    public function update(TodoRequest $request)
+    public function update(Request $request)
     {
         $form = $request->all();
         unset($form['_token']);        
