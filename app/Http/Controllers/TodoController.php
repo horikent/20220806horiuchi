@@ -4,31 +4,41 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
-use App\Http\Requests\TodoRequest;
+use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
     public function index(Request $request)
     {
+        $user = Auth::user();
         $todos = Todo::all();
         $tag_id= $request->input;
         $param = [
             'todos' => $todos,
-            'tag_id' => $tag_id
+            'tag_id' => $tag_id,
+            'user' =>$user
         ];
-            return view('index', $param);
+            return view('home', $param);
     }
     
     public function find()
     {
-        return view('find',  ['input' => '']);
+        $user = Auth::user();
+        $param = [
+        'user' =>$user,
+        'input' => ''
+    ];
+        return view('find', $param);
     }
+
     public function search(Request $request)
     {
+        $user = Auth::user();
         $search = Todo::where('task', 'LIKE BINARY',"%{$request->input}%")->get();
         $param = [
             'search' => $search,
-            'input' => $request->input
+            'input' => $request->input,
+            'user' =>$user
         ];
             return view('find', $param);       
     }

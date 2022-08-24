@@ -92,6 +92,13 @@
 
 <div class="todolist">
   <h2 class="title">Todo List</h2>
+  @if (Auth::check())
+  <p>「 {{$user->name . ' 」でログイン中' .  ''}}</p><button>ログアウト</button><br>
+    
+  @else
+  <p>ログインしてください。（<a href="/login">ログイン</a>｜
+    <a href="/register">登録</a>）</p>
+  @endif  
     <button class="find">
       <a href="/find">タスク検索</a>
     </button>
@@ -108,13 +115,14 @@
       <input type="text" class="text-add" name="task" required minlength="1" maxlength="20" >
       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <div class="tag">
-          <select name="tag-select">
+          <select name="tag-id">
             <option value="{{$tag_id==1}}"></option>
             <option value="{{$tag_id==2}}">家事</option>
             <option value="{{$tag_id==3}}">勉強</option>
             <option value="{{$tag_id==4}}">運動</option>
             <option value="{{$tag_id==5}}">食事</option>
             <option value="{{$tag_id==6}}">移動</option>
+              <input type="hidden" name="$tag_id" value="{{$tag_id}}" />
           </select>
         </div>
         <button type="submit" class="btn btn-add">
