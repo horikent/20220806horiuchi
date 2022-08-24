@@ -151,10 +151,10 @@
         </td>          
         <td>
           <button type="submit">
-            @if ($todos->tag_id != null)
+            @if(isset($tag_id))
               @foreach ($todos as $tag_id)
                 <tr>
-                  <td>{{ $tag_id->getTitle() }}</td>
+                  <td>{{$tag_id->getTitle() }}</td>
                 </tr>
               @endforeach
             @endif
