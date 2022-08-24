@@ -16,8 +16,8 @@ class TodoController extends Controller
     
     public function find()
     {
-        return view('find',  [input => '']);
-        return view('find',  [search => '']);
+        return view('find',  ['input' => '']);
+        return view('find',  ['search' => '']);
     }
     public function search(Request $request)
     {

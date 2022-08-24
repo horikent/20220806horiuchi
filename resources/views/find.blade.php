@@ -20,7 +20,7 @@
   <button>ログアウト</button>
     <form action="find" method="POST">
       @csrf
-        <input type="text" name="input" value="{{$input}}">
+        <input type="text" name="input" >
           <div class="tag">
             <select name="tag-select">
               <option value=""></option>
@@ -44,6 +44,20 @@
       </div>     
     </tr>
   <ul>
+  @if($search == null)
+    <tr> 
+      <td>
+      </td>    
+      <td>
+      </td>          
+      <td>
+      </td> 
+      <td>
+      </td> 
+      <td>          
+      </td>
+    </tr>       
+  @else
     <div class="table-td">
       @foreach ($search as $find)   
       <tr> 
@@ -78,15 +92,15 @@
               <button type="submit" class="btn btn-delete">
                 削除
               </button> 
-          <td>
+          </td>
       </form>  
       </tr>     
     @endforeach
     </div>  
+  @endif
   </ul>
   </table>  
     <button>
       <a href="/">戻る</a>
     </button>
-
 
