@@ -109,12 +109,12 @@
       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <div class="tag">
           <select name="tag-select">
-            <option value=""></option>
-            <option value="家事">家事</option>
-            <option value="勉強">勉強</option>
-            <option value="運動">運動</option>
-            <option value="食事">食事</option>
-            <option value="移動">移動</option>
+            <option value="{{tag_id==1}}"></option>
+            <option value="{{tag_id==2}}">家事</option>
+            <option value="{{tag_id==3}}">勉強</option>
+            <option value="{{tag_id==4}}">運動</option>
+            <option value="{{tag_id==5}}">食事</option>
+            <option value="{{tag_id==6}}">移動</option>
           </select>
         </div>
         <button type="submit" class="btn btn-add">
@@ -150,8 +150,14 @@
           <input type="hidden" name="id" value="{{$todo->id}}">  
         </td>          
         <td>
-          <button type="submit" value="">
-            
+          <button type="submit">
+            @if ($todos->tag_id != null)
+              @foreach ($todos as $tag_id)
+                <tr>
+                  <td>{{ $tag_id->getTitle() }}</td>
+                </tr>
+              @endforeach
+            @endif
           </button> 
         </td> 
         <td>

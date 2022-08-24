@@ -17,18 +17,17 @@ class Tag extends Model
     'tag'
     ];
 
-    public function createTag() {
-        Tag::create([
-            'id' => 1,
-            'name' => '',
-        ]);
-    } 
+public function relate(Request $request)
+    {
+        $tags = Tag::all();
+        return view('/', ['tags' => $tags]);
+    }
 
     public function todos(){
-    return $this->hasMany('App\Models\Todo');    
+        return $this->hasMany('App\Models\Todo');    
     }
 
     public function getTitle(){
-        return 'ID'.$this->id . ':' . $this->tag;
+        return $this->tag;
     }
 }

@@ -18,9 +18,9 @@
 <div class="tasksearch">
   <h2 class="title">タスク検索</h2>
   <button>ログアウト</button>
-    <form action="find" method="POST">
+    <form action="/find" method="POST">
       @csrf
-        <input type="text" name="input" >
+        <input type="text" name="input" value="{{$input}}">
           <div class="tag">
             <select name="tag-select">
               <option value=""></option>
@@ -44,35 +44,22 @@
       </div>     
     </tr>
   <ul>
-  @if($search == null)
-    <tr> 
-      <td>
-      </td>    
-      <td>
-      </td>          
-      <td>
-      </td> 
-      <td>
-      </td> 
-      <td>          
-      </td>
-    </tr>       
-  @else
+  @if(isset($search))
     <div class="table-td">
-      @foreach ($search as $find)   
+      @foreach ($search as $input)   
       <tr> 
         <td>
-          @if($find->created_at === $find->updated_at)
-            {{$find->created_at}}
+          @if($input->created_at === $input->updated_at)
+            {{$input->created_at}}
           @else 
-            {{$find->updated_at}} 
+            {{$input->updated_at}} 
           @endif
         </td>    
       <form action="/edit" method="POST">
         @csrf   
         <td>
-          <input type="text" class=text-edit name="task" value=" {{$find->task}}" size="20">                   
-          <input type="hidden" name="id" value="{{$find->id}}">  
+          <input type="text" class=text-edit name="task" value=" {{$input->task}}" size="20">                   
+          <input type="hidden" name="id" value="{{$input->id}}">  
         </td>          
         <td>
           <button type="submit" value="">
@@ -88,7 +75,7 @@
       <form action="/delete" method="POST">
         @csrf          
           <td>          
-            <input type="hidden" name="id" value="{{$find->id}}">            
+            <input type="hidden" name="id" value="{{$input->id}}">            
               <button type="submit" class="btn btn-delete">
                 削除
               </button> 

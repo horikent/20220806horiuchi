@@ -17,13 +17,15 @@ class TodoController extends Controller
     public function find()
     {
         return view('find',  ['input' => '']);
-        return view('find',  ['search' => '']);
     }
     public function search(Request $request)
     {
-        $find = $request->input;
-        $search=Todo::where('task', 'LIKE BINARY',"%{$request->input}%")->get();
-        return redirect('/find');
+        $search = Todo::where('task', 'LIKE BINARY',"%{$request->input}%")->get();
+        $param = [
+            'search' => $search,
+            'input' => $request->input
+        ];
+            return view('find', $param);       
     }
 
     public function create(Request $request)
