@@ -13,10 +13,10 @@ class TodoController extends Controller
         $todos = Todo::all();
         $tag_id= $request->input;
         $param = [
-            'input' => '',
-            'search' => ''
+            'todos' => $todos,
+            'tag_id' => $tag_id
         ];
-        return view('find', $param);
+            return view('index', $param);
     }
     
     public function find()
