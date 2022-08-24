@@ -18,7 +18,7 @@ class TodoController extends Controller
             'tag_id' => $tag_id,
             'user' =>$user
         ];
-            return view('home', $param);
+            return view('index', $param);
     }
     
     public function find()

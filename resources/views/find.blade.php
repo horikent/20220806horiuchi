@@ -93,6 +93,6 @@
   </ul>
   </table>  
     <button>
-      <a href="/home">戻る</a>
+      <a href="/index">戻る</a>
     </button>
 
