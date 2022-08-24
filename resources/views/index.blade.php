@@ -109,12 +109,12 @@
       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <div class="tag">
           <select name="tag-select">
-            <option value="{{tag_id==1}}"></option>
-            <option value="{{tag_id==2}}">家事</option>
-            <option value="{{tag_id==3}}">勉強</option>
-            <option value="{{tag_id==4}}">運動</option>
-            <option value="{{tag_id==5}}">食事</option>
-            <option value="{{tag_id==6}}">移動</option>
+            <option value="{{$tag_id==1}}"></option>
+            <option value="{{$tag_id==2}}">家事</option>
+            <option value="{{$tag_id==3}}">勉強</option>
+            <option value="{{$tag_id==4}}">運動</option>
+            <option value="{{$tag_id==5}}">食事</option>
+            <option value="{{$tag_id==6}}">移動</option>
           </select>
         </div>
         <button type="submit" class="btn btn-add">
