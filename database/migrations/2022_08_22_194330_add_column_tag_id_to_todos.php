@@ -14,7 +14,7 @@ class AddColumnTagIdToTodos extends Migration
     public function up()
     {
         Schema::table('todos', function (Blueprint $table) {
-            $table->int('tag_id');
+            $table->integer('tag_id');
         });
     }
 
@@ -26,7 +26,7 @@ class AddColumnTagIdToTodos extends Migration
     public function down()
     {
         Schema::table('todos', function (Blueprint $table) {
-            $table->integer('tag_id');
+            //
         });
     }
 }

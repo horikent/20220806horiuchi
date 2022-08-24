@@ -8,10 +8,15 @@ use App\Http\Requests\TodoRequest;
 
 class TodoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $todos = Todo::all();
-            return view('index', ['todos' => $todos]);
+        $tag_id= $request->input;
+        $param = [
+            'input' => '',
+            'search' => ''
+        ];
+        return view('find', $param);
     }
     
     public function find()
