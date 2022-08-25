@@ -21,6 +21,9 @@ Route::post('/add', [TodoController::class, 'create']);
 Route::post('/edit', [TodoController::class, 'update']);
 Route::post('/delete', [TodoController::class, 'remove']);
 
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
