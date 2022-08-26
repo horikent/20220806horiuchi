@@ -115,11 +115,12 @@
       <input type="text" class="text-add" name="task" required minlength="1" maxlength="20" >
       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <div class="tag">
-          @foreach($tags as $tag)
-            <select name="tag_id">
+          <select name="tag_id">
+            @foreach($tags as $tag)
               <option value="{{$tag->id}}">{{$tag->tag}}</option>
-            </select>
-          @endforeach  
+                <input type="hidden" name="tag_id" value="{{$tag->id}}" />
+            @endforeach  
+          </select>
         </div>
         <button type="submit" class="btn btn-add">
           追加
