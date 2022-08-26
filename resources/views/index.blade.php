@@ -118,8 +118,8 @@
           <select name="tag_id">
             @foreach($tags as $tag)
               <option value="{{$tag->id}}">{{$tag->tag}}</option>
-                <input type="hidden" name="tag_id" value="{{$tag->id}}" />
             @endforeach  
+            <input type="hidden" name="tag_id" value="{{$tag->id}}" />
           </select>
         </div>
         <button type="submit" class="btn btn-add">
