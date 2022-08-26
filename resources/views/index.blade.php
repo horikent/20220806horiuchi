@@ -5,13 +5,23 @@
   }
 
   .todolist {
-      margin: 10% 25%;
+      margin: 10% 21%;
       height: auto;
       background-color: white;
       background-size: cover;
       border-radius: 10px; 
       padding: 20px;   
   }        
+
+  .title-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .title-container-login{
+    display: flex;
+    padding:0 2px;
+  }
 
   .find {
     margin: 5px 0;
@@ -24,6 +34,11 @@
   a{
   text-decoration: none;
   color: #adff2f;
+  }
+
+  .add-task{
+  display: flex;
+  align-items: center;
   }
 
   .text-add{
@@ -49,7 +64,16 @@
     justify-content: space-between;
   }  
 
-.btn {
+  .tag{
+    padding:5px 2px;
+  }
+
+  .tag_id{
+    font-size:15px;
+    padding:7px 2px;
+  }
+
+  .btn {
       display: inline-block;
       padding: 0.3em 1em;
       text-decoration: none;
@@ -91,14 +115,19 @@
 </style>
 
 <div class="todolist">
-  <h2 class="title">Todo List</h2>
-  @if (Auth::check())
-  <p>「 {{$user->name . ' 」でログイン中' .  ''}}</p><button>ログアウト</button><br>
-    
-  @else
-  <p>ログインしてください。（<a href="/login">ログイン</a>｜
-    <a href="/register">登録</a>）</p>
-  @endif  
+  <div class="title-container">
+    <div class="title-container-ttl">
+      <h2>Todo List</h2>
+    </div>
+    <div class="title-container-login">
+      @if (Auth::check())
+      <p>「{{$user->name .'」でログイン中' .  ''}}</p><button>ログアウト</button><br>    
+      @else
+      <p>ログインしてください。（<a href="/login">ログイン</a>｜
+        <a href="/register">登録</a>）</p>
+      @endif  
+    </div>
+  </div>
     <button class="find">
       <a href="/find">タスク検索</a>
     </button>
@@ -112,19 +141,21 @@
           </td>
         </tr>
       @endif  
-      <input type="text" class="text-add" name="task" required minlength="1" maxlength="20" >
-      <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-        <div class="tag">
-          <select name="tag_id">
-            @foreach($tags as $tag)
-              <option value="{{$tag->id}}">{{$tag->tag}}</option>
-            @endforeach  
-            <input type="hidden" name="tag_id" value="{{$tag->id}}" />
-          </select>
-        </div>
+      <div class="add-task">
+        <input type="text" class="text-add" name="task" required minlength="1" maxlength="20" >
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+          <div class="tag">
+            <select class="tag_id" name="tag_id">
+              @foreach($tags as $tag)
+                <option value="{{$tag->id}}">{{$tag->tag}}</option>
+              @endforeach  
+              <input type="hidden" name="tag_id" value="tag_id" />
+            </select>
+          </div>
         <button type="submit" class="btn btn-add">
           追加
         </button>
+      </div>
     </form>
 
   <table>   

@@ -18,7 +18,7 @@
 <div class="tasksearch">
   <h2 class="title">タスク検索</h2>
     @if (Auth::check())
-      <p>「 {{$user->name . ' 」でログイン中' .  ''}}</p><button>ログアウト</button><br>    
+      <p>「{{$user->name . '」でログイン中' .  ''}}</p><button>ログアウト</button><br>    
     @else
       <p>ログインしてください。（<a href="/login">ログイン</a>｜
         <a href="/register">登録</a>）</p>

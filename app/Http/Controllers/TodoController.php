@@ -48,18 +48,19 @@ class TodoController extends Controller
     {
         $form = $request->all();
         Todo::create($form);
-        return redirect('/');
+        dd();
+        return redirect('/index');
 	}
     public function update(Request $request)
     {
         $form = $request->all();
         unset($form['_token']);        
         Todo::where('id', $request->id)->update($form);
-        return redirect('/');
+        return redirect('/index');
 	}    
     public function remove(Request $request)
     {
         Todo::find($request->id)->delete();
-        return redirect('/');
+        return redirect('/index');
     }      
 }    
