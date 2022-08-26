@@ -115,15 +115,11 @@
       <input type="text" class="text-add" name="task" required minlength="1" maxlength="20" >
       <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <div class="tag">
-          <select name="&tag_id">
-            <option value="{{&tag_id==1}}"></option>
-            <option value="{{&tag_id==2}}">家事</option>
-            <option value="{{&tag_id==3}}">勉強</option>
-            <option value="{{&tag_id==4}}">運動</option>
-            <option value="{{&tag_id==5}}">食事</option>
-            <option value="{{&tag_id==6}}">移動</option>
-              <input type="hidden" name="&tag_id" value="{{&tag_id}}" />
-          </select>
+          @foreach($tags as $tag)
+            <select name="tag_id">
+              <option value="{{$tags->id}}">{{$tags->tag}}</option>
+            </select>
+          @endforeach  
         </div>
         <button type="submit" class="btn btn-add">
           追加

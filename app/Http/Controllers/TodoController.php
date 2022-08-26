@@ -12,10 +12,10 @@ class TodoController extends Controller
     {
         $user = Auth::user();
         $todos = Todo::all();
-        $tag_id= $request->input;
+        $tags = Tag::all();
         $param = [
             'todos' => $todos,
-            'tag_id' => $tag_id,
+            'tag' => $this,
             'user' =>$user
         ];
             return view('index', $param);
