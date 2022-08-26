@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,7 @@ class TodoController extends Controller
         $tags = Tag::all();
         $param = [
             'todos' => $todos,
-            'tag' => $this,
+            'tags' => $tags,
             'user' =>$user
         ];
             return view('index', $param);
