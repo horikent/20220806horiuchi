@@ -20,14 +20,14 @@ class Tag extends Model
 public function relate(Request $request)
     {
         $tags = Tag::all();
-        return view('/', ['tags' => $tags]);
+        return view('/index', ['tags' => $tags]);
     }
 
     public function todos(){
         return $this->hasMany('App\Models\Todo');    
     }
 
-    public function getTitle(){
+    public function getTag(){
         return $this->tag;
     }
 }

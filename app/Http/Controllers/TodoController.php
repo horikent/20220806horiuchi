@@ -48,7 +48,6 @@ class TodoController extends Controller
     {
         $form = $request->all();
         Todo::create($form);
-        dd();
         return redirect('/index');
 	}
     public function update(Request $request)
