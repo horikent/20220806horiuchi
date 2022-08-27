@@ -20,11 +20,10 @@ Laravel9
 
 ## テーブル設計
 
-< --- 作成したテーブル設計の画像 ---- >
+<img src="image/table.png" alt=""> 
 
 ## ER 図
 
-< --- 作成した ER 図の画像 ---- >
 <img src="image/todo.drawio.png" alt=""> 
 
 

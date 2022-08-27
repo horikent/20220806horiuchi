@@ -149,7 +149,6 @@
               @foreach($tags as $tag)
                 <option value="{{$tag->id}}">{{$tag->tag}}</option>
               @endforeach  
-              <input type="hidden" name="tag_id" value="tag_id" />
             </select>
           </div>
         <button type="submit" class="btn btn-add">
@@ -186,15 +185,13 @@
           <input type="hidden" name="id" value="{{$todo->id}}">  
         </td>          
         <td>
-          <button type="submit">
-            @if(isset($tag_id))
-              @foreach ($todos as $tag_id)
-                <tr>
-                  <td>{{$tag_id->getTitle() }}</td>
-                </tr>
-              @endforeach
-            @endif
-          </button> 
+          <div class="tag-btn">
+            <select name="tag_id">
+              @foreach($tags as $tag)
+                <option value="{{$todo->tag_id}}">{{$tag->tag}}</option>
+              @endforeach  
+            </select>
+          </div>
         </td> 
         <td>
           <button type="submit" class="btn btn-edit">
