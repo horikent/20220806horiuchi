@@ -19,14 +19,16 @@ class TodoController extends Controller
             'tags' => $tags,
             'user' =>$user
         ];
-            return view('index', $param);
+            return view('home', $param);
     }
     
     public function find()
     {
+        $tags = Tag::all();
         $user = Auth::user();
         $param = [
         'user' =>$user,
+        'tags' => $tags,
         'input' => ''
     ];
         return view('find', $param);
@@ -34,11 +36,13 @@ class TodoController extends Controller
 
     public function search(Request $request)
     {
+        $tags = Tag::all();
         $user = Auth::user();
         $search = Todo::where('task', 'LIKE BINARY',"%{$request->input}%")->get();
         $param = [
             'search' => $search,
             'input' => $request->input,
+            'tags' => $tags,
             'user' =>$user
         ];
             return view('find', $param);       
@@ -48,18 +52,18 @@ class TodoController extends Controller
     {
         $form = $request->all();
         Todo::create($form);
-        return redirect('/index');
+        return redirect('/home');
 	}
     public function update(Request $request)
     {
         $form = $request->all();
         unset($form['_token']);        
         Todo::where('id', $request->id)->update($form);
-        return redirect('/index');
+        return redirect('/home ');
 	}    
     public function remove(Request $request)
     {
         Todo::find($request->id)->delete();
-        return redirect('/index');
+        return redirect('/home');
     }      
 }    

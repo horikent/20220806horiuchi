@@ -14,7 +14,7 @@ use App\Http\Controllers\TodoController;
 |
 */
 
-Route::get('/index', [TodoController::class, 'index']);
+Route::get('/home', [TodoController::class, 'index']);
 Route::get('/find', [TodoController::class, 'find']);
 Route::post('/find', [TodoController::class, 'search']);
 Route::post('/add', [TodoController::class, 'create']);

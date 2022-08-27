@@ -20,7 +20,7 @@ class Tag extends Model
 public function relate(Request $request)
     {
         $tags = Tag::all();
-        return view('/index', ['tags' => $tags]);
+        return view('/home', ['tags' => $tags]);
     }
 
     public function todos(){

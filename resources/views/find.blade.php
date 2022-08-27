@@ -5,7 +5,9 @@
   }
 
   .tasksearch-ttl{
-      display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .tasksearch {
@@ -16,12 +18,29 @@
       border-radius: 10px; 
       padding: 20px;   
   }        
+  .tasksearch-ipt{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  task-ipt{
+    width:80%;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 8px 10px;
+    text-align: center;
+    width:100%;
+    justify-content: space-between;
+  }  
 
 </style>
 
 <div class="tasksearch">
   <div class="tasksearch-ttl">
-    <h2 class="title">タスク検索</h2>
+    <h2>タスク検索</h2>
       @if (Auth::check())
         <p>「{{$user->name . '」でログイン中' .  ''}}</p><button>ログアウト</button><br>    
       @else
@@ -29,20 +48,17 @@
           <a href="/register">登録</a>）</p>
       @endif  
   </div>
-      <form action="/find" method="POST">
-      @csrf
-        <input type="text" name="input" value="{{$input}}">
-          <div class="tag">
-            <select name="tag-select">
-              <option value=""></option>
-              <option value="家事">家事</option>
-              <option value="勉強">勉強</option>
-              <option value="運動">運動</option>
-              <option value="食事">食事</option>
-              <option value="移動">移動</option>
+    <form action="/find" method="POST">
+    @csrf
+      <div class="tasksearch-ipt">
+        <input type="text" class="task-ipt" name="input" value="{{$input}}" required minlength="1" maxlength="20" >
+            <select class="tag_id" name="tag_id">
+              @foreach($tags as $tag)
+                <option value="{{$tag->id}}">{{$tag->tag}}</option>
+              @endforeach  
             </select>
-          </div>
         <input type="submit" value="検索"><br>
+      </div>
     </form>      
   <table>     
     <tr>
@@ -73,9 +89,11 @@
           <input type="hidden" name="id" value="{{$input->id}}">  
         </td>          
         <td>
-          <button type="submit" value="">
-            
-          </button> 
+          <div class="tag-btn">
+            <select>
+              <option>{{$input->tag->getTag()}}</option>
+            </select>
+          </div>
         </td> 
         <td>
           <button type="submit" class="btn btn-edit">
@@ -99,6 +117,6 @@
   </ul>
   </table>  
     <button>
-      <a href="/index">戻る</a>
+      <a href="/home">戻る</a>
     </button>
 

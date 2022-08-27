@@ -187,9 +187,7 @@
         <td>
           <div class="tag-btn">
             <select>
-              @foreach($tags as $tag)
-                <option>{{$todo->tag->getTag()}}</option>
-              @endforeach  
+              <option>{{$todo->tag->getTag()}}</option>
             </select>
           </div>
         </td> 
