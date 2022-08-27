@@ -186,7 +186,7 @@
         </td>          
         <td>
           <div class="tag-btn">
-            <select name="tag_id">
+            <select>
               @foreach($tags as $tag)
                 <option value="{{$todo->tag_id}}">{{$tag->tag}}</option>
               @endforeach  
