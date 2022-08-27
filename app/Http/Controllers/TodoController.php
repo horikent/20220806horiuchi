@@ -19,7 +19,7 @@ class TodoController extends Controller
             'tags' => $tags,
             'user' =>$user
         ];
-            return view('home', $param);
+            return view('index', $param);
     }
     
     public function find()
@@ -52,18 +52,18 @@ class TodoController extends Controller
     {
         $form = $request->all();
         Todo::create($form);
-        return redirect('/home');
+        return redirect('/index');
 	}
     public function update(Request $request)
     {
         $form = $request->all();
         unset($form['_token']);        
         Todo::where('id', $request->id)->update($form);
-        return redirect('/home ');
+        return redirect('/index ');
 	}    
     public function remove(Request $request)
     {
         Todo::find($request->id)->delete();
-        return redirect('/home');
+        return redirect('/index');
     }      
 }    

@@ -24,6 +24,41 @@
     justify-content: space-between;
   }
 
+  .btn {
+      display: inline-block;
+      padding: 0.3em 1em;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: .4s;
+      background: white;   
+      font-weight:bold;
+  }
+    .btn-lgt{
+      color: red;
+  }
+  .btn-lgt:hover {
+      background: red;
+      color: white;
+  }
+  .btn-edit{
+      color: darkorange;
+      border: solid 2.5px darkorange;
+      writing-mode: vertical-rl;
+  }
+  .btn-edit:hover {
+      background: darkorange;
+      color: white;
+}
+  .btn-delete{
+      color: aquamarine;
+      border: solid 2.5px aquamarine;
+      writing-mode: vertical-rl;
+  }
+  .btn-delete:hover {
+      background: aquamarine;
+      color: white;
+}
+
   task-ipt{
     width:80%;
   }
@@ -42,7 +77,7 @@
   <div class="tasksearch-ttl">
     <h2>タスク検索</h2>
       @if (Auth::check())
-        <p>「{{$user->name . '」でログイン中' .  ''}}</p><button>ログアウト</button><br>    
+        <p>「{{$user->name . '」でログイン中' .  ''}}</p><button class="btn btn-lgt">ログアウト</button><br>    
       @else
         <p>ログインしてください。（<a href="/login">ログイン</a>｜
           <a href="/register">登録</a>）</p>
@@ -57,7 +92,7 @@
                 <option value="{{$tag->id}}">{{$tag->tag}}</option>
               @endforeach  
             </select>
-        <input type="submit" value="検索"><br>
+        <input class="btn" type="submit" value="検索"><br>
       </div>
     </form>      
   <table>     
@@ -116,7 +151,7 @@
   @endif
   </ul>
   </table>  
-    <button>
-      <a href="/home">戻る</a>
+    <button ckass="btn btn-rtn">
+      <a href="/index">戻る</a>
     </button>
 

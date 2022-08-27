@@ -82,6 +82,13 @@
       background: white;   
       font-weight:bold;
   }
+  .btn-lgt{
+      color: red;
+  }
+  .btn-lgt:hover {
+      background: red;
+      color: white;
+  }
 
   .btn-add {
       color: mediumorchid;
@@ -121,7 +128,7 @@
     </div>
     <div class="title-container-login">
       @if (Auth::check())
-      <p>「{{$user->name .'」でログイン中' .  ''}}</p><button>ログアウト</button><br>    
+      <p>「{{$user->name .'」でログイン中' .  ''}}</p><button class="btn btn-lgt">ログアウト</button><br>    
       @else
       <p>ログインしてください。（<a href="/login">ログイン</a>｜
         <a href="/register">登録</a>）</p>
