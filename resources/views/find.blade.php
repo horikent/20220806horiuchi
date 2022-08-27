@@ -4,6 +4,10 @@
       background-color: rgb(29, 7, 130);
   }
 
+  .tasksearch-ttl{
+      display: flex;
+  }
+
   .tasksearch {
       margin: 20% 25%;
       height: auto;
@@ -16,14 +20,16 @@
 </style>
 
 <div class="tasksearch">
-  <h2 class="title">タスク検索</h2>
-    @if (Auth::check())
-      <p>「{{$user->name . '」でログイン中' .  ''}}</p><button>ログアウト</button><br>    
-    @else
-      <p>ログインしてください。（<a href="/login">ログイン</a>｜
-        <a href="/register">登録</a>）</p>
-    @endif  
-    <form action="/find" method="POST">
+  <div class="tasksearch-ttl">
+    <h2 class="title">タスク検索</h2>
+      @if (Auth::check())
+        <p>「{{$user->name . '」でログイン中' .  ''}}</p><button>ログアウト</button><br>    
+      @else
+        <p>ログインしてください。（<a href="/login">ログイン</a>｜
+          <a href="/register">登録</a>）</p>
+      @endif  
+  </div>
+      <form action="/find" method="POST">
       @csrf
         <input type="text" name="input" value="{{$input}}">
           <div class="tag">
