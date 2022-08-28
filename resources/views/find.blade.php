@@ -58,7 +58,7 @@
     border-color: lightgray;
     height: 40px;
     width:80%;
-}
+  }
 
   .text-edit{
     padding:6px 0;
@@ -137,7 +137,8 @@
   .btn-edit:hover {
     background: #FA9770;
     color: white;
-}
+  }
+
   .btn-delete{
     color: #71FADC;
     border: solid 2.5px #71FADC;
