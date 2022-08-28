@@ -210,7 +210,7 @@
       </div>     
     </tr>
   <ul>
-  @if(isset($search))
+  @if(@isset($search))
     <div class="table-td">
       @foreach ($search as $input)   
       <tr> 
@@ -249,7 +249,49 @@
       </form>  
       </tr>     
     @endforeach
-    </div>  
+    </div> 
+  @else   
+    @if(@isset($tag_id))
+    <div class="table-td">
+      @foreach ($tag_id as $tag_search)   
+      <tr> 
+        <td>
+          @if($tag_search->created_at === $tag_search->updated_at)
+            {{$tag_search->created_at}}
+          @else 
+            {{$tag_search->updated_at}} 
+          @endif
+        </td>    
+      <form action="/edit" method="POST">
+        @csrf   
+        <td>
+          <input type="text" class=text-edit name="task" value=" {{$tag_search->task}}" size="20">                   
+          <input type="hidden" name="id" value="{{$tag_search->id}}">  
+        </td>          
+        <td>
+          <select class="tag_id-result">
+            <option>{{$tag_search->tag->getTag()}}</option>
+          </select>
+        </td> 
+        <td>
+          <button type="submit" class="btn btn-edit">
+            更新
+          </button> 
+        </td> 
+      </form>    
+      <form action="/delete" method="POST">
+        @csrf          
+          <td>          
+            <input type="hidden" name="id" value="{{$tag_search->id}}">            
+              <button type="submit" class="btn btn-delete">
+                削除
+              </button> 
+          </td>
+      </form>  
+      </tr>     
+    @endforeach
+    </div> 
+    @endif
   @endif
   </ul>
   </table>  
