@@ -94,7 +94,9 @@
     color: red;
     border: solid 2.5px red;
     margin:6px 7px;
-    width:40px;
+    margin-top:10px;
+    width:60px;
+    font-size:12px;
   }
 
   .btn-lgt:hover {
