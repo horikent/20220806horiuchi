@@ -1,7 +1,7 @@
 
 <style>
   body {
-      background-color: rgb(45,25,124);
+    background-color: rgb(45,25,124);
   }
 
   .tasksearch-ttl{
@@ -11,12 +11,12 @@
   }
 
   .tasksearch {
-      margin: 10% 21%;
-      height: auto;
-      background-color: white;
-      background-size: cover;
-      border-radius: 10px; 
-      padding: 20px;   
+    margin: 10% 21%;
+    height: auto;
+    background-color: white;
+    background-size: cover;
+    border-radius: 10px; 
+    padding: 20px;   
   }        
 
   .title-container{
@@ -24,6 +24,7 @@
     align-items: center;
     justify-content: space-between;
   }
+
   .title-container-login{
     display: flex;
     padding:0 2px;
@@ -60,11 +61,11 @@
 }
 
   .text-edit{
-      padding:6px 0;
-      border-radius: 5px;  
-      border-color: lightgray;
-      height: 30px;
-      width: 100%;
+    padding:6px 0;
+    border-radius: 5px;  
+    border-color: lightgray;
+    height: 30px;
+    width: 100%;
   }
 
   .tag{
@@ -79,12 +80,12 @@
     margin-left:3px;
   }
 
-.tag_id-result{
+  .tag_id-result{
     font-size:12px;
     padding:5px 3px;
     background:#E9E9ED;
     border-radius: 5px;  
-}
+  }
 
   .search-btn{
     display: flex;
@@ -92,70 +93,70 @@
   }
 
   .btn {
-      display: inline-block;
-      padding: 0.3em 1em;
-      text-decoration-line: none;
-      border-radius: 4px;
-      transition: .4s;
-      background: white;   
-      font-weight:bold;
-  }
-    .btn-lgt{
-      color: red;
-      border: solid 2.5px red;
-      writing-mode: vertical-rl;      
-      margin:8px 7px;
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration-line: none;
+    border-radius: 4px;
+    transition: .4s;
+    background: white;   
+    font-weight:bold;
   }
 
+  .btn-lgt{
+    color: red;
+    border: solid 2.5px red;
+    margin:6px 7px;
+    width:40px;
+  }
 
   .btn-lgt:hover {
-      background: red;
-      color: white;
+    background: red;
+    color: white;
   }
 
-    .btn-search {
-      color: #DC70FA;
-      border: solid 2.5px #DC70FA;
-      writing-mode: vertical-rl;   
-      margin:3px;   
+  .btn-search {
+    color: #DC70FA;
+    border: solid 2.5px #DC70FA;
+    writing-mode: vertical-rl;   
+    margin:3px;   
   }
 
   .btn-search:hover {
-      background: #DC70FA;
-      color: white;
+    background: #DC70FA;
+    color: white;
   }
 
   .btn-edit{
-      color: #FA9770;
-      border: solid 2.5px #FA9770;
-      writing-mode: vertical-rl;
+    color: #FA9770;
+    border: solid 2.5px #FA9770;
+    writing-mode: vertical-rl;
   }
 
   .btn-edit:hover {
-      background: #FA9770;
-      color: white;
+    background: #FA9770;
+    color: white;
 }
   .btn-delete{
-      color: #71FADC;
-      border: solid 2.5px #71FADC;
-      writing-mode: vertical-rl;
+    color: #71FADC;
+    border: solid 2.5px #71FADC;
+    writing-mode: vertical-rl;
   }
 
   .btn-delete:hover {
-      background: #71FADC;
-      color: white;
+    background: #71FADC;
+    color: white;
   }
 
   .btn-rtn{
-      color:  black;
-      border: solid 2.5px black;
-      height:18px;
-      font-size:12px;
+    color:  black;
+    border: solid 2.5px black;
+    height:18px;
+    font-size:12px;
   }
 
   .btn-rtn:hover {
-      color: white;    
-      background: black;
+    color: white;    
+    background: black;
   }
 
 </style>
@@ -166,12 +167,13 @@
     <h2>タスク検索</h2>
       <div class="title-container-login">
         @if (Auth::check())
-          <p>「{{$user->name . '」でログイン中' .  ''}}</p><button id="logout" class="btn btn-lgt"><form method="POST" action="{{ route('logout') }}">
-          <form>
+          <p>「{{$user->name . '」でログイン中' .  ''}}</p>
+          <form method="POST" action="{{ route('logout') }}">
             @csrf
               <a :href="route('logout')"
                 onclick="event.preventDefault();
-                  this.closest('form').submit();">ログアウト</a>
+                  this.closest('form').submit();" id="logout" class="btn btn-lgt">
+                  ログアウト</a>
           </form>
         </button><br>    
         @else
