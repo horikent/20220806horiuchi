@@ -93,6 +93,7 @@
       writing-mode: vertical-rl;
       margin:6px 7px;
   }
+
   .btn-lgt:hover {
       background: red;
       color: white;
@@ -150,14 +151,13 @@
       <p>「{{$user->name .'」でログイン中' .  ''}}</p>
         <button id="logout" class="btn btn-lgt">
           <form method="POST" action="{{ route('logout') }}">
-            @csrf
-              <a :href="route('logout')"
-                onclick="event.preventDefault();
+            @csrf<a :href="route('logout')"
+              onclick="event.preventDefault();
                   this.closest('form').submit();">ログアウト</a>
           </form>
-        </button><br>    
+        </button>
       @else
-      <p>ログインしてください。<a href="/login">ログイン</a></p>
+        <META http-equiv="Refresh" content="0;URL=/login">
       @endif  
     </div>
   </div>

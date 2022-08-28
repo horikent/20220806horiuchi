@@ -166,10 +166,16 @@
     <h2>タスク検索</h2>
       <div class="title-container-login">
         @if (Auth::check())
-          <p>「{{$user->name . '」でログイン中' .  ''}}</p><button id="logout" class="btn btn-lgt"><a href="/login">ログアウト</a></button><br>    
+          <p>「{{$user->name . '」でログイン中' .  ''}}</p><button id="logout" class="btn btn-lgt"><form method="POST" action="{{ route('logout') }}">
+          <form>
+            @csrf
+              <a :href="route('logout')"
+                onclick="event.preventDefault();
+                  this.closest('form').submit();">ログアウト</a>
+          </form>
+        </button><br>    
         @else
-          <p>ログインしてください。（<a href="/login">ログイン</a>｜
-            <a href="/register">登録</a>）</p>
+          <META http-equiv="Refresh" content="0;URL=/login">
         @endif
       </div>  
   </div>
