@@ -17,10 +17,16 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $guarded = [
+        'id'
+    ];
+
     protected $fillable = [
         'name',
         'email',
         'password',
+        'created_at',
+        'updated_at'
     ];
 
     /**
@@ -32,7 +38,9 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+    public function todos(){
+        return $this->hasMany('App\Models\Todo');    
+    }
     /**
      * The attributes that should be cast.
      *

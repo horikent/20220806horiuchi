@@ -14,7 +14,7 @@ class Tag extends Model
     ];
 
     protected $fillable = [
-    'tag'
+    'tag' , 'created_at' , 'updated_at'
     ];
 
 public function relate(Request $request)

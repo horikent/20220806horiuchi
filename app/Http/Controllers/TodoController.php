@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +15,7 @@ class TodoController extends Controller
         $user = Auth::user();
         $todos = Todo::all();
         $tags = Tag::all();
+        $todos= Auth::user()-> todos;
         $param = [
             'todos' => $todos,
             'tags' => $tags,
@@ -21,7 +23,19 @@ class TodoController extends Controller
         ];
             return view('index', $param);
     }
-    
+
+    public function store(Request $request){
+        $todo = new Todo();
+        $todo -> fill($request -> all());
+        $todo -> user_id = Auth::user() -> id;
+        $todo -> save();
+        return redirect('/index') -> route('index',$todo);
+    }    
+    public function construct()
+    {
+    $this->middleware('auth');
+}
+
     public function find()
     {
         $tags = Tag::all();
@@ -72,4 +86,6 @@ class TodoController extends Controller
         Todo::find($request->id)->delete();
         return redirect('/index');
     }      
+    
+
 }    
