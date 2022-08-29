@@ -38,14 +38,18 @@ class TodoController extends Controller
     {
         $tags = Tag::all();
         $user = Auth::user();
-        $search = Todo::where('task', 'LIKE BINARY',"%{$request->input}%")->get();
-        $tag_id = Todo::where('tag_id',"{$request->input}")->get();
+        $keyword = $request->input;
+        $tag_id = $request->tag_id;
+        if (!empty($keyword)) {
+            $search = Todo::where('task', 'like binary', "%{$keyword}%")->get();
+        }
+        if (!empty($tag_id)) {
+            $search = Todo::where('tag_id', 'like binary', "%{$tag_id}%")->get();
+        }
         $param = [
             'search' => $search,
-            'input' => $request->input,
             'tags' => $tags,
             'user' => $user,
-            'tag_id'=> $tag_id
         ];
             return view('find', $param);       
     }
