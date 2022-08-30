@@ -228,9 +228,12 @@
         </td>          
         <td>
           <div class="tag-btn">
-            <select class="tag_id-result">
-              <option>{{$todo->tag->getTag()}}</option>
-            </select>
+          <select class="tag_id-result">
+            <option value="hidden"></option>
+              @foreach($tags as $tag)
+                <option value="{{$tag->id}}">{{$todo->tag->getTag()}}</option>
+              @endforeach  
+          </select>
           </div>
         </td> 
         <td>

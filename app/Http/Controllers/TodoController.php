@@ -13,7 +13,9 @@ class TodoController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $todos = Todo::all();
+        $todos = Todo::whereHas('user', function ($q) use ($request){
+            $q->where('user_id',  Auth::user() -> id);
+    })->get();
         $tags = Tag::all();
         $param = [
             'todos' => $todos,
@@ -78,7 +80,7 @@ class TodoController extends Controller
         ];            
         Todo::create($param);
             if (!empty($user_id)) {
-            $todo = Todo::where('user_id',  "{$user_id}")->get();
+            $todo = Todo::where('user_id',  "$user_id")->get();
         }
         return redirect('/index');
 	}
