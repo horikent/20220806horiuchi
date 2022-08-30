@@ -183,7 +183,6 @@
       <div class="add-task">
         <input type="text" class="text-add" name="task" required minlength="1" maxlength="20" >
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-        <input type="hidden" name="user_id" value="{{user_id}}" />
           <div class="tag">
             <select class="tag_id" name="tag_id">
               @foreach($tags as $tag)

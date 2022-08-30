@@ -31,6 +31,7 @@ class TodoController extends Controller
         $todo -> save();
         return redirect('/index') -> route('index',$todo);
     }    
+    
     public function construct()
     {
     $this->middleware('auth');
@@ -70,10 +71,17 @@ class TodoController extends Controller
 
     public function create(Request $request)
     {
-        $form = $request->all();
-        Todo::create($form);
+        $param = [
+            'task' => $request->task,
+            'created_at'=> $request->created_at, 
+            'updated_at'=> $request->updated_at,
+            'tag_id'=> $request->tag_id,
+            'user_id' =>  $request->user_id
+        ];            
+        Todo::create($param);
         return redirect('/index');
 	}
+
     public function update(Request $request)
     {
         $form = $request->all();
