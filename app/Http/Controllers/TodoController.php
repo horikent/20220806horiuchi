@@ -15,7 +15,6 @@ class TodoController extends Controller
         $user = Auth::user();
         $todos = Todo::all();
         $tags = Tag::all();
-        $todos= Auth::user()-> todos;
         $param = [
             'todos' => $todos,
             'tags' => $tags,
@@ -71,14 +70,16 @@ class TodoController extends Controller
 
     public function create(Request $request)
     {
+        $user_id = Auth::user()->id;
         $param = [
             'task' => $request->task,
-            'created_at'=> $request->created_at, 
-            'updated_at'=> $request->updated_at,
             'tag_id'=> $request->tag_id,
-            'user_id' =>  $request->user_id
+            'user_id' => $user_id,
         ];            
         Todo::create($param);
+            if (!empty($user_id)) {
+            $todo = Todo::where('user_id',  "{$user_id}")->get();
+        }
         return redirect('/index');
 	}
 

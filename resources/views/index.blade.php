@@ -149,6 +149,7 @@
 </style>
 
 <body>
+@csrf
 <div class="todolist">
   <div class="title-container">
     <div class="title-container-ttl">
@@ -157,12 +158,14 @@
     <div class="title-container-login">
       @if (Auth::check())
       <p>「{{$user->name .'」でログイン中' .  ''}}</p>
-          <form method="POST" action="{{ route('logout') }}">
-            @csrf<a :href="route('logout')"
+        <form method="POST" action="{{ route('logout') }}">   
+        @csrf
+        <a :href="route('logout')"
               onclick="event.preventDefault();
                   this.closest('form').submit();" id="logout" class="btn btn-lgt">ログアウト</a>
           </form>
       @else
+        @csrf
         <META http-equiv="Refresh" content="0;URL=/login">
       @endif  
     </div>
