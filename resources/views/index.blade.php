@@ -231,16 +231,12 @@ History
           <input type="hidden" name="id" value="{{$todo->id}}">  
         </td>          
         <td>
-          <input type="hidden" name="tag_id" value="tag_id">
+          <input type="hidden" name="tag_id" value="{{$todo->tag->id}}">
             <div class="tag-btn">
               <select class="tag_id-result">
                 @foreach($tags as $tag)
-                <option value= "{{$tag_id}}" @if($todo->tag->getTag() === '家事') selected @endif>家事</option>
-                <option value= "{{$tag_id}}" @if($todo->tag->getTag() === '勉強') selected @endif>勉強</option>
-                <option value= "{{$tag_id}}"  @if($todo->tag->getTag() === '運動') selected @endif>運動</option>
-                <option value= "{{$tag_id}}" @if($todo->tag->getTag() === '食事') selected @endif>食事</option>
-                <option value= "{{$tag_id}}" @if($todo->tag->getTag() === '移動') selected @endif>移動</option>
-                @endforeach
+                  <option value="{{$tag->id}}">{{$tag->tag}}</option>
+                @endforeach  
               </select>
           </div>
         </td> 
