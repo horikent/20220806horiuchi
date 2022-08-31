@@ -231,11 +231,12 @@ History
           <input type="hidden" name="id" value="{{$todo->id}}">  
         </td>          
         <td>
-          <input type="hidden" name="tag_id" value="{{$todo->tag->id}}">
+          <input type="hidden" >
             <div class="tag-btn">
-              <select class="tag_id-result">
+              <select class="tag_id-result" name="tag_id">
                 @foreach($tags as $tag)
-                  <option value="{{$tag->id}}">{{$tag->tag}}</option>
+                  <option value="{{$tag->id}}" 
+                  @if($tag->id==$tag_id) selected @endif>{{$tag->tag}}</option>
                 @endforeach  
               </select>
           </div>

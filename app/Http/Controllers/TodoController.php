@@ -21,7 +21,8 @@ class TodoController extends Controller
         $param = [
             'todos' => $todos,
             'tags' => $tags,
-            'user' =>$user
+            'user' =>$user,
+            'tag_id' => $tag_id
         ];
             return view('index', $param);
     }
