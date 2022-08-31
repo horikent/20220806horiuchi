@@ -231,11 +231,13 @@
           <input type="hidden" name="tag_id">
             <div class="tag-btn">
               <select class="tag_id-result" name="tag_id">
+                <option value=""></option>                
                 @foreach($tags as $tag)
                   <option  value="{{$tag->id}}" 
                   @if($tag->id==$input->tag_id) selected @endif>{{$tag->tag}}</option>
                 @endforeach  
               </select>
+            </div>  
         </td> 
         <td>
           <button type="submit" class="btn btn-edit">
