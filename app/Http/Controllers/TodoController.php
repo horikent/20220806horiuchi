@@ -17,6 +17,7 @@ class TodoController extends Controller
             $query->where('user_id',  Auth::user() -> id);
     })->get();
         $tags = Tag::all();
+        $tag_id = $request->tag_id;
         $param = [
             'todos' => $todos,
             'tags' => $tags,
@@ -68,7 +69,7 @@ class TodoController extends Controller
         $param = [
             'search' => $search,
             'tags' => $tags,
-            'user' => $user,
+            'user' => $user
         ];
             return view('find', $param);       
     }
@@ -79,7 +80,7 @@ class TodoController extends Controller
         $param = [
             'task' => $request->task,
             'tag_id'=> $request->tag_id,
-            'user_id' => $user_id,
+            'user_id' => $user_id
         ];            
         Todo::create($param);
             if (!empty($user_id)) {
@@ -95,7 +96,7 @@ class TodoController extends Controller
             'task' => $request->task,
             'tag_id'=> $request->tag_id,
             'user_id' => $user_id,
-            '_token' => $request->_token,
+            '_token' => $request->_token
         ];    
         unset($param['_token']);        
         Todo::where('id', $request->id)->update($param);

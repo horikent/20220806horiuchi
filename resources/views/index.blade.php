@@ -1,9 +1,36 @@
+
+Skip to content
+Pulls
+Issues
+Marketplace
+Explore
+@horikent
+horikent /
+20220806horiuchi
+Public
+
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+
+More
+20220806horiuchi/resources/views/index.blade.php
+@horikent
+horikent 54th-commit
+Latest commit f1a091c 2 hours ago
+History
+1 contributor
+262 lines (235 sloc) 5.82 KB
   
 <style>
   body {
     background-color: rgb(45,25,124);
   }
-
   .todolist {
     margin: 10% 21%;
     height: auto;
@@ -12,40 +39,32 @@
     border-radius: 10px; 
     padding: 20px;   
   }        
-
   .title-container{
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-
   .title-container-login{
     display: flex;
     padding:0 2px;
   }
-
   a{ text-decoration-line: none;}
   a:link{ color: rgb(205,241,26);} 
   a:visited { color: rgb(205,241,26); }
   a:hover { color: white; } 
-
   #logout a:link{ color: red;} 
   #logout a:visited { color: red; }
   #logout a:hover { color: white; } 
-
-
   .add-task{
     display: flex;
     align-items: center;
   }
-
   .text-add{
     border-radius: 5px;  
     border-color: lightgray;
     height: 40px;
     width:80%;
   }
-
   .text-edit{
     padding:6px 0;
     border-radius: 5px;  
@@ -53,7 +72,6 @@
     height: 30px;
     width: 100%;
   }
-
   table {
     border-collapse: separate;
     border-spacing: 3px 10px;
@@ -61,25 +79,21 @@
     width:100%;
     justify-content: space-between;
   }  
-
   .tag{
     padding:5px 2px;
   }
-
   .tag_id{
     font-size:15px;
     padding:7px 2px;
     background:#E9E9ED;
     border-radius: 5px;  
   }
-
   .tag_id-result{
     font-size:12px;
     padding:5px 3px;
     background:#E9E9ED;
     border-radius: 5px;  
   }
-
   .btn {
     display: inline-block;
     padding: 0.3em 1em;
@@ -89,7 +103,6 @@
     background: white;   
     font-weight:bold;
   }
-
   .btn-lgt{
     color: red;
     border: solid 2.5px red;
@@ -98,22 +111,18 @@
     width:60px;
     font-size:12px;
   }
-
   .btn-lgt:hover {
     background: red;
     color: white;
   }
-
   .btn-find {
     color: rgb(205,241,26);
     border: solid 2.5px rgb(205,241,26);
   }
-
   .btn-find:hover {
     background: rgb(205,241,26);
     color: white;
   }
-
   .btn-add {
     color: #DC70FA;
     border: solid 2.5px #DC70FA;
@@ -123,29 +132,24 @@
     background: #DC70FA;
     color: white;
   }
-
   .btn-edit{
     color: #FA9770;
     border: solid 2.5px #FA9770;
     writing-mode: vertical-rl;
   }
-
   .btn-edit:hover {
     background: #FA9770;
     color: white;
   }
-
   .btn-delete{
     color: #71FADC;
     border: solid 2.5px #71FADC;
     writing-mode: vertical-rl;
   }
-
   .btn-delete:hover {
     background: #71FADC;
     color: white;
   }
-
 </style>
 
 <body>
@@ -230,11 +234,11 @@
           <input type="hidden" name="tag_id" value="tag_id">
             <div class="tag-btn">
               <select class="tag_id-result">
-                <option  @if($input->tag->getTag() === '家事') selected @endif>家事</option>
-                <option  @if($input->tag->getTag() === '勉強') selected @endif>勉強</option>
-                <option  @if($input->tag->getTag() === '運動') selected @endif>運動</option>
-                <option  @if($input->tag->getTag() === '食事') selected @endif>食事</option>
-                <option  @if($input->tag->getTag() === '移動') selected @endif>移動</option>
+                <option  @if($todo->tag->getTag() === '家事') selected @endif>家事</option>
+                <option  @if($todo->tag->getTag() === '勉強') selected @endif>勉強</option>
+                <option  @if($todo->tag->getTag() === '運動') selected @endif>運動</option>
+                <option  @if($todo->tag->getTag() === '食事') selected @endif>食事</option>
+                <option  @if($todo->tag->getTag() === '移動') selected @endif>移動</option>
               </select>
           </div>
         </td> 
