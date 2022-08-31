@@ -190,9 +190,9 @@
         <input type="text" class="task-ipt" name="input"  maxlength="20" >
           <div class="search-btn">
             <select class="tag_id" name="tag_id">
-              <option value="hidden"></option>
+              <option></option>
               @foreach($tags as $tag)
-                <option value="{{$tag->id}}">{{$tag->tag}}</option>
+                <option>{{$tag->tag}}</option>
               @endforeach  
             </select>
             <input class="btn btn-search" type="submit" value="検索"><br>
@@ -228,9 +228,15 @@
           <input type="hidden" name="id" value="{{$input->id}}">  
         </td>          
         <td>
-          <select class="tag_id-result">
-            <option>{{$input->tag->getTag()}}</option>
-          </select>
+          <input type="hidden" name="tag_id" value="tag_id">
+            <div class="tag-btn">
+              <select class="tag_id-result">
+                <option value="家事" @if($input->tag->getTag() === '家事') selected @endif>家事</option>
+                <option value="勉強" @if($input->tag->getTag() === '勉強') selected @endif>勉強</option>
+                <option value="運動" @if($input->tag->getTag() === '運動') selected @endif>運動</option>
+                <option value="食事" @if($input->tag->getTag() === '食事') selected @endif>食事</option>
+                <option value="移動" @if($input->tag->getTag() === '移動') selected @endif>移動</option>
+              </select>
         </td> 
         <td>
           <button type="submit" class="btn btn-edit">

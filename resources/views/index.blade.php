@@ -227,13 +227,15 @@
           <input type="hidden" name="id" value="{{$todo->id}}">  
         </td>          
         <td>
-          <div class="tag-btn">
-          <select class="tag_id-result">
-            <option value="hidden"></option>
-              @foreach($tags as $tag)
-                <option value="{{$tag->id}}">{{$todo->tag->getTag()}}</option>
-              @endforeach  
-          </select>
+          <input type="hidden" name="tag_id" value="tag_id">
+            <div class="tag-btn">
+              <select class="tag_id-result">
+                <option value="家事" @if($todo->tag->getTag() === '家事') selected @endif>家事</option>
+                <option value="勉強" @if($todo->tag->getTag() === '勉強') selected @endif>勉強</option>
+                <option value="運動" @if($todo->tag->getTag() === '運動') selected @endif>運動</option>
+                <option value="食事" @if($todo->tag->getTag() === '食事') selected @endif>食事</option>
+                <option value="移動" @if($todo->tag->getTag() === '移動') selected @endif>移動</option>
+              </select>
           </div>
         </td> 
         <td>

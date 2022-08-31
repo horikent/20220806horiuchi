@@ -13,8 +13,8 @@ class TodoController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $todos = Todo::whereHas('user', function ($q) use ($request){
-            $q->where('user_id',  Auth::user() -> id);
+        $todos = Todo::whereHas('user', function ($query) {
+            $query->where('user_id',  Auth::user() -> id);
     })->get();
         $tags = Tag::all();
         $param = [
@@ -54,6 +54,9 @@ class TodoController extends Controller
     {
         $tags = Tag::all();
         $user = Auth::user();
+        $search = Todo::whereHas('user', function ($query) {
+        $query->where('user_id',  Auth::user() -> id);
+    })->get();
         $keyword = $request->input;
         $tag_id = $request->tag_id;
         if (!empty($keyword)) {
@@ -87,9 +90,15 @@ class TodoController extends Controller
 
     public function update(Request $request)
     {
-        $form = $request->all();
-        unset($form['_token']);        
-        Todo::where('id', $request->id)->update($form);
+        $user_id = Auth::user()->id;
+        $param = [
+            'task' => $request->task,
+            'tag_id'=> $request->tag_id,
+            'user_id' => $user_id,
+            '_token' => $request->_token,
+        ];    
+        unset($param['_token']);        
+        Todo::where('id', $request->id)->update($param);
         return redirect('/index ');
 	}    
     public function remove(Request $request)
