@@ -236,10 +236,10 @@ History
               <select class="tag_id-result" name="tag_id">
                 @foreach($tags as $tag)
                   <option  value="{{$tag->id}}" 
-                  @if(!is_null($todo->tag->getTag())) selected @endif>{{$tag->tag}}</option>
+                  @if($tag->id==$todo->tag_id) selected @endif>{{$tag->tag}}</option>
                 @endforeach  
               </select>
-          </div>
+            </div>
         </td> 
         <td>
           <button type="submit" class="btn btn-edit">
