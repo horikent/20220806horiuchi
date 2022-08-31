@@ -231,11 +231,11 @@
           <input type="hidden" name="tag_id" value="tag_id">
             <div class="tag-btn">
               <select class="tag_id-result">
-                <option value="家事" @if($input->tag->getTag() === '家事') selected @endif>家事</option>
-                <option value="勉強" @if($input->tag->getTag() === '勉強') selected @endif>勉強</option>
-                <option value="運動" @if($input->tag->getTag() === '運動') selected @endif>運動</option>
-                <option value="食事" @if($input->tag->getTag() === '食事') selected @endif>食事</option>
-                <option value="移動" @if($input->tag->getTag() === '移動') selected @endif>移動</option>
+                <option  @if($input->tag->getTag() === '家事') selected @endif>家事</option>
+                <option  @if($input->tag->getTag() === '勉強') selected @endif>勉強</option>
+                <option  @if($input->tag->getTag() === '運動') selected @endif>運動</option>
+                <option  @if($input->tag->getTag() === '食事') selected @endif>食事</option>
+                <option  @if($input->tag->getTag() === '移動') selected @endif>移動</option>
               </select>
         </td> 
         <td>
