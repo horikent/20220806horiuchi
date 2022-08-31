@@ -235,8 +235,8 @@ History
             <div class="tag-btn">
               <select class="tag_id-result" name="tag_id">
                 @foreach($tags as $tag)
-                  <option value="{{$tag->id}}" 
-                  @if($tag->id==$tag_id) selected @endif>{{$tag->tag}}</option>
+                  <option  value="{{$tag->id}}" 
+                  @if(!is_null($todo->tag->getTag())) selected @endif>{{$tag->tag}}</option>
                 @endforeach  
               </select>
           </div>
