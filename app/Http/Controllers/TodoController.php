@@ -30,7 +30,7 @@ class TodoController extends Controller
     public function store(Request $request){
         $todo = new Todo();
         $todo -> fill($request -> all());
-        $todo -> user_id = Auth::user() -> id;
+        $todo -> user_id = Auth::user()->id;
         $todo -> save();
         return redirect('/index') -> route('index',$todo);
     }    
@@ -54,8 +54,9 @@ class TodoController extends Controller
 
     public function search(Request $request)
     {
-    $model = new Auth(); 
-    $user_id = $model->id;
+    $tags = Tag::all();
+    $user = Auth::user();
+    $user_id = Auth::id (); 
     $keyword = $request->input;
     $tag_id = $request->tag_id;
     if (!empty($keyword)) {
@@ -64,11 +65,13 @@ class TodoController extends Controller
     if (!empty($tag_id)) {
         $search = Todo::where('tag_id', 'like binary', "%{$tag_id}%")->get();
     }         
-    $result = $search::where('user_id', '=', $user_id);
+    $result = $search->where('user_id', '=', $user_id);
         $param = [
+            'tags' => $tags,
+            'user' => $user,
             'user_id' => $user_id,
             'tag_id' => $tag_id,
-            'resutl' => $result
+            'search' => $result
         ];
             return view('find', $param);       
     }

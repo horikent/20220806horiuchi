@@ -212,7 +212,7 @@
   <ul>
   @if(@isset($search))
     <div class="table-td">
-      @foreach ($result as $input)   
+      @foreach ($search as $input)   
       <tr> 
         <td>
           @if($input->created_at === $input->updated_at)
