@@ -67,11 +67,10 @@ class TodoController extends Controller
     }         
     $result = $search->where('user_id', '=', $user_id);
         $param = [
+            'tag_id' => $tag_id,
+            'search' => $result,
             'tags' => $tags,
             'user' => $user,
-            'user_id' => $user_id,
-            'tag_id' => $tag_id,
-            'search' => $result
         ];
             return view('find', $param);       
     }

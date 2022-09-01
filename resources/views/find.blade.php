@@ -187,12 +187,12 @@
     <form action="/find" method="POST">
     @csrf
       <div class="tasksearch-ipt">
-        <input type="text" class="task-ipt" name="input"  maxlength="20" >
+        <input type="text" class="task-ipt"  maxlength="20" >
           <div class="search-btn">
             <select class="tag_id" name="tag_id">
               <option></option>
               @foreach($tags as $tag)
-                <option>{{$tag->tag}}</option>
+                <option value="{{$tag->id}}">{{$tag->tag}}</option>
               @endforeach  
             </select>
             <input class="btn btn-search" type="submit" value="検索"><br>
