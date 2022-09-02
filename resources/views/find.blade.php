@@ -228,7 +228,7 @@
           <input type="hidden" name="id" value="{{$input->id}}">  
         </td>          
         <td>
-          <input type="hidden" name="tag_id">
+          <input type="hidden" >
             <div class="tag-btn">
               <select class="tag_id-result" name="tag_id">
                 <option value=""></option>                

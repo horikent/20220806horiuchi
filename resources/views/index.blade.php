@@ -1,32 +1,3 @@
-
-Skip to content
-Pulls
-Issues
-Marketplace
-Explore
-@horikent
-horikent /
-20220806horiuchi
-Public
-
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-
-More
-20220806horiuchi/resources/views/index.blade.php
-@horikent
-horikent 54th-commit
-Latest commit f1a091c 2 hours ago
-History
-1 contributor
-262 lines (235 sloc) 5.82 KB
-  
 <style>
   body {
     background-color: rgb(45,25,124);
@@ -162,6 +133,15 @@ History
     <div class="title-container-login">
       @if (Auth::check())
       <p>「{{$user->name .'」でログイン中' .  ''}}</p>
+      @if (count($errors) > 0)
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>
+          {{$error}}
+        </li>
+        @endforeach
+      </ul>
+      @endif
         <form method="POST" action="{{ route('logout') }}">   
         @csrf
         <a :href="route('logout')"
@@ -224,6 +204,15 @@ History
             {{$todo->updated_at}} 
           @endif
         </td>    
+      @if (count($errors) > 0)
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>
+          {{$error}}
+        </li>
+        @endforeach
+      </ul>
+      @endif  
       <form action="/edit" method="POST">
         @csrf   
         <td>

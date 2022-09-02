@@ -70,7 +70,7 @@ class TodoController extends Controller
             'tag_id' => $tag_id,
             'search' => $result,
             'tags' => $tags,
-            'user' => $user,
+            'user' => $user
         ];
             return view('find', $param);       
     }
