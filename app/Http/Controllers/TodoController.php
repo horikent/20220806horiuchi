@@ -56,8 +56,8 @@ class TodoController extends Controller
     {
     $tags = Tag::all();
     $user = Auth::user();
-    $user_id = Auth::id (); 
-    $keyword = $request->input;
+    $user_id = Auth::user()->id;
+    $keyword = $request->task;
     $tag_id = $request->tag_id;
     if (!empty($keyword)) {
         $search = Todo::where('task', 'like binary', "%{$keyword}%")->get();
