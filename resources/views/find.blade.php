@@ -187,7 +187,8 @@
     <form action="/find" method="POST">
     @csrf
       <div class="tasksearch-ipt">
-        <input type="text" class="task-ipt"  maxlength="20" >
+        <input type="text" name="task" class="task-ipt"  maxlength="20" >
+        <input type="hidden">
           <div class="search-btn">
             <select class="tag_id" name="tag_id">
               <option></option>
@@ -231,7 +232,7 @@
           <input type="hidden" >
             <div class="tag-btn">
               <select class="tag_id-result" name="tag_id">
-                <option value=""></option>                
+                <option></option>                
                 @foreach($tags as $tag)
                   <option  value="{{$tag->id}}" 
                   @if($tag->id==$input->tag_id) selected @endif>{{$tag->tag}}</option>

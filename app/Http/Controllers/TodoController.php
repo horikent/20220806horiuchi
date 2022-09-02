@@ -56,7 +56,7 @@ class TodoController extends Controller
     {
     $tags = Tag::all();
     $user = Auth::user();
-    $user_id = Auth::user()->id;
+    $user_id = Auth::id();
     $keyword = $request->task;
     $tag_id = $request->tag_id;
     if (!empty($keyword)) {
