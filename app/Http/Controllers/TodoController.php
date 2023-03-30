@@ -13,16 +13,16 @@ class TodoController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $todos = Todo::whereHas('user', function ($query) {
+        $todos = Todo::sortable()->whereHas('user', function ($query) {
             $query->where('user_id',  Auth::user() -> id);
     })->get();
-        $tags = Tag::all();
-        $tag_id = $request->tag_id;
         $param = [
-            'todos' => $todos,
-            'tags' => $tags,
+            'todos' =>$todos,
+            // 'date' => $date,
+            // 'book' => $book,
+            // 'author' => $author,
+            // 'publisher' => $publisher,
             'user' =>$user,
-            'tag_id' => $tag_id
         ];
             return view('index', $param);
     }
@@ -78,9 +78,15 @@ class TodoController extends Controller
     public function create(Request $request)
     {
         $user_id = Auth::user()->id;
+        $date = $request->date;
+        $book = $request->book;
+        $author = $request->author;
+        $publisher = $request->publisher;
         $param = [
-            'task' => $request->task,
-            'tag_id'=> $request->tag_id,
+            'date' => $date,
+            'book' => $book,
+            'author' => $author,
+            'publisher' => $publisher,
             'user_id' => $user_id
         ];            
         Todo::create($param);
@@ -103,11 +109,11 @@ class TodoController extends Controller
         Todo::where('id', $request->id)->update($param);
         return redirect('/index ');
 	}    
+
     public function remove(Request $request)
     {
         Todo::find($request->id)->delete();
         return redirect('/index');
     }      
     
-
 }    

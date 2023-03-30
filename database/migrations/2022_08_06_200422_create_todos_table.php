@@ -17,7 +17,11 @@ class CreateTodosTable extends Migration
             $table->id();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
-            $table->string('task', 20);
+            $table->integer('user_id');
+            $table->datetime('date');
+            $table->string('book', 40);
+            $table->string('author', 20);
+            $table->string('publisher', 20);
         });
     }
 
